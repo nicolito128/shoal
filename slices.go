@@ -139,9 +139,9 @@ func Count[S ~[]T, T comparable](collection S, value T) (count int) {
 /*
 CountBy returns the number of elements in the slice that satisfy the given predicate(s).
 
-It uses MorphCond transformations, allowing for operations like:
+It uses MorphCond2 transformations, allowing for operations like:
 
-	CountBy([]Type{...}, func(value Type) bool {...})
+	CountBy([]Type{...}, func(index int, value Type) bool {...})
 */
 func CountBy[S ~[]T, T comparable](collection S, predicates ...MorphCond2[int, T]) (count int) {
 	for range FilterSeq(collection, predicates...) {
